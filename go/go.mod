@@ -1,3 +1,3 @@
-module go-wasm-practice
+module ikemen-go-bindings
 
 go 1.20

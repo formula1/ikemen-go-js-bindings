@@ -16,7 +16,7 @@ func goCallback(this js.Value, args []js.Value) any {
 	return args[0]
 }
 
-func jsMain() {
+func JsMain() {
 
 	fmt.Println("Hello, World! (from go)")
 	// api.goPrint("hi!")
@@ -31,7 +31,7 @@ func jsMain() {
 
 	fmt.Println("Finished Main")
 
-	BindToFileSystem("hello world")
+	// BindToFileSystem("hello world")
 
 	c := make(chan struct{}, 0)
 	js.Global().Set("aFunction", js.FuncOf(goCallback))

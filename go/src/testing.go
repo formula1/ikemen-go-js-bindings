@@ -18,7 +18,7 @@ func goCallback(this js.Value, args []js.Value) any {
 
 func JsMain() {
 
-	fmt.Println("Hello, World! (from go)")
+	fmt.Println("Hello, World! (from JsMain)")
 	// api.goPrint("hi!")
 	js.Global().Call("updateDOM", "Hello, World")
 	js.Global().Set("aBoolean", true)

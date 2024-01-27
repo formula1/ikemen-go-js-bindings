@@ -18,7 +18,7 @@ Promise.resolve().then(async ()=>{
 
   const [goMain, fs, ] = await Promise.all([
     WebAssembly.instantiateStreaming(fetch(STATIC_FILES_ORIGIN + "/dist.wasm"), go.importObject),
-    setupFileSystem(STATIC_FILES_ORIGIN + "/mugen_base.zip"),
+    setupFileSystem(STATIC_FILES_ORIGIN + "/hidden.mugen_base.zip"),
   ]);
   
 

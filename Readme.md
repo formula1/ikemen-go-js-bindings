@@ -7,6 +7,15 @@ Attempting to Build JS Bindings to Ikemen Go
 
 # Build
 
+- Zip up necessary Mugen Files to `./static/hidden.mugen_base.zip`
+  - **This includes the directories**
+    - `/chars`
+    - `/data`
+    - `/external`
+    - `/font`
+    - `/save`
+    - `/sound`
+    - `/stages`
 - [Install Go](https://go.dev/doc/install)
 - [Install Docker Compose](https://docs.docker.com/compose/install/)
 - [Install Node](https://nodejs.org/en)

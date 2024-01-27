@@ -12,7 +12,7 @@ Attempting to Build JS Bindings to Ikemen Go
 - [Install Node](https://nodejs.org/en)
 - terminal - `cd path/to/this/repo`
 - To Build Go
-  - terminal - `GOOS=js GOARCH=wasm go build -o ./build/static/main.wasm go/src/main.go`
+  - terminal - `GOOS=js GOARCH=wasm go build -o ./build/static/dist.wasm go/src/main.go`
 - To Build Bindings
   - terminal - `cd ./web`
   - terminal - `npm run build`

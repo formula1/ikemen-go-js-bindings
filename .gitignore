@@ -2,6 +2,7 @@ node_modules
 hidden
 hidden.*
 dist
+dist.*
 temp
 .awcache
 

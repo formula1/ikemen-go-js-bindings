@@ -1,6 +1,10 @@
+console.log("about to import");
+
 import { configure, BFSRequire } from "browserfs";
 import { Buffer } from "buffer";
-import { promisify } from "util"
+import { promisify } from "util";
+
+console.log("successfuly imported");
 export async function setupFileSystem(zipUrl: string){
   const response = await fetch(zipUrl)
   if(!response.ok){

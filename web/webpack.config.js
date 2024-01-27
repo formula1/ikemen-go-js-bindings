@@ -10,9 +10,9 @@ const { config: dotEnvConfig } = require("dotenv");
 setupEnv({ rootPath: __dirname });
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: './src/index.ts',
   output: {
-    filename: 'hidden.build.js',
+    filename: 'dist.build.js',
     path: path.resolve(__dirname, 'public'),
     publicPath: '/',
   },
@@ -39,11 +39,8 @@ module.exports = {
     new Visualizer({
       filename: './hidden.stats.html'
     }),
-    new HtmlWebpackPlugin({
-      template: './public/template.html',
-    }),
     new NodePolyfillPlugin({
-      includeAliases: ['events']
+      includeAliases: ['buffer', 'util', 'events']
     })
   ],
   mode: process.env.NODE_ENV || "development",

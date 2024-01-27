@@ -20,8 +20,4 @@ services:
       - "8081:8081"
     environment:
       - HTTP_PORT=8081
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8081/"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
+      - NODE_DEBUG=1

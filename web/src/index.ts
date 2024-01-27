@@ -1,8 +1,9 @@
-import "wasm/go_wasm_exec.js"
+import "./wasm/go_wasm_exec.js"
 import { setupFileSystem } from "./GameBindings/FileSystem";
 import { STATIC_FILES_ORIGIN } from "./constants";
 
 Promise.resolve().then(async ()=>{
+  console.log("Game Binding Start");
   if(!WebAssembly){
     throw new Error("WebAssembly is not available on your browser");
   }
@@ -16,7 +17,7 @@ Promise.resolve().then(async ()=>{
   const go = new Go();
 
   const [goMain, fs, ] = await Promise.all([
-    WebAssembly.instantiateStreaming(fetch(STATIC_FILES_ORIGIN + "/main.wasm"), go.importObject),
+    WebAssembly.instantiateStreaming(fetch(STATIC_FILES_ORIGIN + "/dist.wasm"), go.importObject),
     setupFileSystem(STATIC_FILES_ORIGIN + "/mugen_base.zip"),
   ]);
   

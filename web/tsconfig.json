@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "outDir": "./dist/",
+    "lib": ["dom", "es2022"],
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "sourceMap": true
+  },
+  "typeRoots": [
+    "./node_modules/@types",
+    "./@types"
+  ],
+  "files": [
+    "src/index.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}
+

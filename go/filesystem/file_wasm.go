@@ -332,7 +332,7 @@ func (f *BrowserFsFile) Write(p []byte) (n int, err error) {
 
 func (file *BrowserFsFile) Read(b []byte) (n int, err error) {
 	if file.isClosed {
-		return 0, errors.New("file is closed")
+		return 0, ErrorIsClosed
 	}
 	if file.isDir {
 		return 0, ErrorIsDir

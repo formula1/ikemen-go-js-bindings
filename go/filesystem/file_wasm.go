@@ -302,6 +302,31 @@ func (file *BrowserFsFile) Seek(offset int64, whence int) (ret int64, err error)
 	return newOffset, nil
 }
 
+func (f *BrowserFsFile) Write(p []byte) (n int, err error) {
+	if f.isClosed {
+		return 0, ErrorIsClosed
+	}
+	if f.isDir {
+		return 0, ErrorIsDir
+	}
+
+	// Check if the offset is beyond the current content size
+	if f.offset > uint64(len(f.content)) {
+		// If so, extend the content slice with zeroes until the offset
+		padding := make([]byte, f.offset-uint64(len(f.content)))
+		f.content = append(f.content, padding...)
+	}
+
+	// Append the data to the content slice
+	f.content = append(f.content, p...)
+	n = len(p)
+
+	// Update the offset
+	f.offset += uint64(n)
+
+	return n, nil
+}
+
 func (file *BrowserFsFile) Read(b []byte) (n int, err error) {
 	if file.isClosed {
 		return 0, errors.New("file is closed")

@@ -7,6 +7,7 @@ import (
 type IFile interface {
 	Readdirnames(n int) (names []string, err error)
 	Seek(offset int64, whence int) (ret int64, err error)
+	Write(p []byte) (n int, err error)
 	Read(b []byte) (n int, err error)
 	Close() error
 }

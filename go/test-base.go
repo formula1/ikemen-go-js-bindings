@@ -33,9 +33,9 @@ func JsMain() {
 
 	// BindToFileSystem("hello world")
 
-	c := make(chan struct{}, 0)
-	js.Global().Set("aFunction", js.FuncOf(goCallback))
-	<-c
+	// c := make(chan struct{}, 0)
+	// js.Global().Set("aFunction", js.FuncOf(goCallback))
+	// <-c
 }
 
 func jsGlobalSetJSON(s string, person *Person) {

@@ -30,7 +30,7 @@ var ErrorIsClosed = errors.New("File Is Closed")
 func NewFileSystem() AbstractFileSystem {
 	fmt.Println("About to build BrowserFS")
 
-	jsVar := js.Global().Get("BROWSER_FS")
+	jsVar := js.Global().Get("IKEMEN_GO_BROWSER_FS")
 	fs := &BrowserFS{jsVar: jsVar}
 
 	fmt.Println("built BrowserFS")

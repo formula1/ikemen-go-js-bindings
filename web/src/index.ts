@@ -2,6 +2,10 @@ import "./wasm/go_wasm_exec.js"
 import { setupFileSystem } from "./GameBindings/FileSystem";
 import { STATIC_FILES_ORIGIN } from "./constants";
 
+interface IGlobalBinding extends Window {
+  IKEMEN_GO_BROWSER_FS: Awaited<ReturnType<typeof setupFileSystem>>
+}
+
 Promise.resolve().then(async ()=>{
   console.log("Game Binding Start");
   if(!WebAssembly){
@@ -14,6 +18,7 @@ Promise.resolve().then(async ()=>{
     };
   }
 
+  const GLOBAL_BINDING = window as any as IGlobalBinding;
   const go = new Go();
 
   const [goMain, fs, ] = await Promise.all([
@@ -22,7 +27,11 @@ Promise.resolve().then(async ()=>{
   ]);
   
 
-  console.log(fs.readdir("/"));
+  console.log("root dir:", fs.readdirSync("/"));
+
+  GLOBAL_BINDING.IKEMEN_GO_BROWSER_FS = fs;
+
+  console.log("Set fs as -", "IKEMEN_GO_BROWSER_FS", GLOBAL_BINDING.IKEMEN_GO_BROWSER_FS)
 
   go.run(goMain.instance);
 }).catch((e)=>{

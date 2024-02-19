@@ -281,6 +281,9 @@ func (file *BrowserFsFile) Seek(offset int64, whence int) (ret int64, err error)
 	if file.isClosed {
 		return 0, ErrorIsClosed
 	}
+	if file.isDir {
+		return 0, ErrorIsDir
+	}
 
 	var newOffset int64
 	switch whence {
@@ -330,6 +333,9 @@ func (f *BrowserFsFile) Write(p []byte) (n int, err error) {
 func (file *BrowserFsFile) Read(b []byte) (n int, err error) {
 	if file.isClosed {
 		return 0, errors.New("file is closed")
+	}
+	if file.isDir {
+		return 0, ErrorIsDir
 	}
 
 	if file.offset >= uint64(len(file.content)) {

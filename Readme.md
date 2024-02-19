@@ -21,7 +21,8 @@ Attempting to Build JS Bindings to Ikemen Go
 - [Install Node](https://nodejs.org/en)
 - terminal - `cd path/to/this/repo`
 - To Build Go
-  - terminal - `OOS=js GOARCH=wasm go build -o ./static/dist.wasm ./go/src/main.go ./go/src/testing.go`
+  - One time Build - terminal (inside the `/go` folder) - `GOOS=js GOARCH=wasm go build -o ../static/dist.wasm .`
+  - Watch And Build - terminal (from any folder) - `bash watch-and-build.sh`
 - To Build Bindings
   - terminal - `cd ./web`
   - terminal - `npm run build`

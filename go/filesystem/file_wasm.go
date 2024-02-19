@@ -56,9 +56,8 @@ func (fs *BrowserFS) Mkdir(name string, perm IFileMode) error {
 }
 
 func (fs *BrowserFS) Create(name string) (IFile, error) {
-	if fs.Exists(name) {
-		return nil, ErrorAlreadyExist
-	}
+	// https://pkg.go.dev/os#NewFile
+	// Should truncate (erase) if already exists
 	fs.jsVar.Get("writeFileSync").Invoke(name, "")
 	return makeNewFile(fs.jsVar, name), nil
 }
